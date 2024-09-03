@@ -18,6 +18,7 @@ class Car(models.Model):
     model_year = models.IntegerField(blank=True, null=True)
     plate = models.CharField(max_length=10)
     price = models.FloatField(blank=True, null=True)
+    photo = models.ImageField(upload_to='cars/', blank=True, null=True)
 
     def __str__(self):
         return self.model
