@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Carros</title>
 </head>
+{% block content %}
 <body>
     <h1>Meus Carros</h1>
     <h3>Subtítulo falando como meus carros são legais.</h3>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro velit vitae, cum, illo reprehenderit expedita sunt veniam atque dicta maxime doloribus ullam consectetur suscipit modi magni sint molestiae accusamus? Magnam?</p>
+    <p>Meu carro é um {{ cars.model }}.</p>
 </body>
+{% endblock %}
 </html>
