@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Carros</title>
 </head>
-{% block content %}
 <body>
+    {% block content %}
     <h1>Meus Carros</h1>
-    <h3>Subtítulo falando como meus carros são legais.</h3>
-    <p>Meu carro é um {{ cars.model }}.</p>
+    <h3>Subtítulo falando dos meus carros são legais.</h3>
+    <h4>Lista de carros:</h4>
+    {% for car in cars %}
+    <p>{{ car.brand }} - {{ car.model }} {{ car.factory_year }}</p>
+    {% endfor %}
+    {% endblock %}
 </body>
-{% endblock %}
 </html>
