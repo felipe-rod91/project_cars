@@ -3,7 +3,7 @@ from cars.models import Car
 
 
 def cars_view(request):
-    cars = Car.objects.all()
+    cars = Car.objects.filter(model__contains='bat')
 
     return render(
         request, 

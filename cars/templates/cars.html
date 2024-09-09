@@ -7,12 +7,12 @@
 </head>
 <body>
     {% block content %}
-    <h1>Meus Carros</h1>
-    <h3>Subtítulo falando dos meus carros são legais.</h3>
-    <h4>Lista de carros:</h4>
-    {% for car in cars %}
-    <p>{{ car.brand }} - {{ car.model }} {{ car.factory_year }}</p>
-    {% endfor %}
+        <h1>Meus Carros</h1>
+        <h3>Subtítulo falando dos meus carros legais.</h3>
+        <h4>Lista de carros:</h4>
+        {% for car in cars %}
+            <li>{{ car.brand }} - {{ car.model }} {{ car.factory_year }}</li>
+        {% endfor %}
     {% endblock %}
 </body>
 </html>
