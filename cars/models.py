@@ -17,7 +17,7 @@ class Car(models.Model):
     factory_year = models.IntegerField(blank=True, null=True)
     model_year = models.IntegerField(blank=True, null=True)
     plate = models.CharField(max_length=10)
-    price = models.FloatField(blank=True, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     photo = models.ImageField(upload_to='cars/', blank=True, null=True)
 
     def __str__(self):
