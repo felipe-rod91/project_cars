@@ -1,25 +1,14 @@
 from django import forms
-from cars.models import Brand, Car
+from cars.models import Car
 
-class CarForm(forms.Form):
-    model = forms.CharField(max_length=200)
-    brand = forms.ModelChoiceField(Brand.objects.all())
-    factory_year = forms.IntegerField()
-    model_year = forms.IntegerField()
-    plate = forms.CharField(max_length=10)
-    price = forms.DecimalField(max_digits=10, decimal_places=2)
-    photo = forms.ImageField()
+class CarModelForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = '__all__'
 
-    def save(self):
-        car = Car(
-            model = self.cleaned_data['model'],
-            brand = self.cleaned_data['brand'],
-            factory_year = self.cleaned_data['factory_year'],
-            model_year = self.cleaned_data['model_year'],
-            plate = self.cleaned_data['plate'],
-            price = self.cleaned_data['price'],
-            photo = self.cleaned_data['photo'],
-        )
-        car.save()
-        return car
-    
+
+    def clean_price(self):
+        price = self.cleaned_data.get('price')
+        if price < 20000:
+            self.add_error('price', 'Preço do carro não pode ser menor do que R$20.000,00.')
+        return price
