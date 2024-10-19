@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
 from cars.models import Car
 from cars.forms import CarModelForm
-from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 
 class CarsListView(ListView):
@@ -18,23 +16,13 @@ class CarsListView(ListView):
         return cars
 
 
-class NewCarView(View):
-    
-    def get(self, request):
-        new_car_form = CarModelForm()
-        return render(request, 'new_car.html', {'new_car_form': new_car_form})
-    
-    def post(self, request):
-        new_car_form = CarModelForm(request.POST, request.FILES)
-        if new_car_form.is_valid():
-            new_car_form.save()
-            return redirect('cars_list')
-        return render(request, 'new_car.html', {'new_car_form': new_car_form})
-
-
 class NewCarCreateView(CreateView):
     model = Car
     form_class = CarModelForm
     template_name = 'new_car.html'
     success_url = '/cars/'
-    
+
+
+class CarDetailView(DetailView):
+    model = Car
+    template_name = 'car_detail.html'
