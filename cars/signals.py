@@ -2,12 +2,16 @@ from django.db.models.signals import pre_save, post_save, post_delete
 from django.dispatch import receiver
 from django.db.models import Sum
 from cars.models import Car, CarInventory
+from cars.gemini_api import get_car_AI_bio
 
 
 @receiver(pre_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
     if not instance.bio:
-        instance.bio = 'Bio gerada automaticamente.'
+        AI_bio = get_car_AI_bio(
+            instance.brand, instance.model, instance.model_year
+        )
+        instance.bio = AI_bio
 
 
 def car_inventory_update():
