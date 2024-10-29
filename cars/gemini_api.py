@@ -11,7 +11,10 @@ def get_car_AI_bio(brand, model, year):
     
     gen_ai_model = genai.GenerativeModel("gemini-1.5-flash")
     
-    prompt = f'Me mostre uma descrição de venda para o carro {brand} {model} {year} em apenas 250 caracteres. Fale coisas específicas desse modelo de carro.'
+    prompt = f'''Me mostre uma descrição de venda para o 
+    carro {brand} {model} {year} em apenas 250 caracteres. 
+    Fale coisas específicas desse modelo de carro.'''
+    
     response = gen_ai_model.generate_content(prompt)
 
     return response.text
