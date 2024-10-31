@@ -13,7 +13,7 @@ def get_car_AI_bio(brand, model, year):
     
     prompt = f'''Me mostre uma descrição de venda para o 
     carro {brand} {model} {year} em apenas 250 caracteres. 
-    Fale coisas específicas desse modelo de carro.'''
+    Fale coisas específicas desse modelo de carro, sem citar o preço.'''
     
     response = gen_ai_model.generate_content(prompt)
 
